@@ -1,0 +1,16 @@
+html {
+  scrollbar-gutter: stable;
+}
+
+.container {
+  --bs-gutter-x: 1rem;
+}
+
+.p6{
+  padding: 6rem;
+}
+
+.py-6{
+  padding-bottom: 6rem;
+  padding-top: 6rem;
+}
