@@ -1,0 +1,26 @@
+<fieldset class="feature-fields mb-2" data-nested-fields-target="fields">
+  <legend>Feature</legend>
+
+  <div class="field-row-stacked mb-2">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field-row-stacked mb-2">
+    <%= form.label :image %>
+    <% if form.object.image.attached? %>
+      <div class="mb-2">
+        <%= image_tag form.object.image.variant(resize_to_limit: [ 150, 150 ]), class: "field-border" %>
+      </div>
+    <% end %>
+    <%= form.file_field :image, accept: "image/*" %>
+  </div>
+
+  <div class="field-row-stacked mb-2">
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 4 %>
+  </div>
+
+  <%= form.hidden_field :_destroy %>
+  <button type="button" class="btn98-sm text-danger" data-action="nested-fields#remove">Remove feature</button>
+</fieldset>

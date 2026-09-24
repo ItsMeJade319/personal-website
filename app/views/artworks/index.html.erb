@@ -1,0 +1,49 @@
+<% content_for :title, "Gallery" %>
+
+<% if notice.present? %>
+  <p class="field-border alert98 alert98--success d-flex align-items-center gap-2 mb-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <%= notice %>
+  </p>
+<% end %>
+
+<% if admin_signed_in? %>
+  <div class="text-end mb-2">
+    <%= link_to admin_artworks_path, class: "text-decoration-none text-secondary small d-inline-flex align-items-center gap-1" do %>
+      <i class="bi bi-pencil"></i>
+      Manage gallery
+    <% end %>
+  </div>
+<% end %>
+
+<div class="window p-0 mb-4">
+  <div class="title-bar">
+    <div class="title-bar-text">C:\Gallery &mdash; Paint</div>
+  </div>
+
+  <div class="window-toolbar">
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Help</span>
+  </div>
+
+  <div class="d-flex align-items-center gap-2 px-2 pb-2">
+    <span class="small text-secondary" style="font-family: var(--font-chrome);">Address</span>
+    <div class="field-border flex-grow-1 small" style="font-family: var(--font-chrome); padding: 3px 6px;">C:\Artworks\</div>
+  </div>
+
+  <div class="window-body">
+    <h1 class="mb-2">Gallery</h1>
+    <p class="text-secondary">Art is how I unwind, and it's where a lot of my eye for color and layout comes from.</p>
+    <hr>
+
+    <div id="artworks" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+      <%= render @artworks %>
+    </div>
+
+    <% if @artworks.none? %>
+      <p class="text-muted mb-0">No artwork yet.</p>
+    <% end %>
+  </div>
+</div>

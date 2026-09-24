@@ -1,0 +1,16 @@
+one:
+  title: Quiet Morning
+  slug: quiet-morning
+  description: A study in soft light.
+  medium: Oil on canvas
+  year: 2023
+  published: true
+  published_at: <%= 1.day.ago %>
+
+two:
+  title: A Draft Piece
+  slug: a-draft-piece
+  description: Still working on this one.
+  medium: Charcoal
+  year: 2025
+  published: false

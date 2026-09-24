@@ -1,0 +1,24 @@
+<div class="admin-list-item">
+  <% if project.image.attached? %>
+    <%= image_tag project.image.variant(resize_to_limit: [ 80, 80 ]), class: "admin-thumb" %>
+  <% else %>
+    <div class="admin-thumb-placeholder"><i class="bi bi-image"></i></div>
+  <% end %>
+
+  <div class="flex-grow-1" style="min-width: 0;">
+    <%= link_to project.to_s.presence || "Project ##{project.id}", project_path(project), class: "d-block text-body text-decoration-none fw-semibold text-truncate" %>
+    <div class="d-flex align-items-center gap-2">
+      <span class="status-pill <%= project.published? ? "status-pill--published" : "" %>"><%= project.published? ? "Published" : "Draft" %></span>
+      <span class="text-muted small"><%= pluralize(project.features.size, "feature") %></span>
+    </div>
+  </div>
+
+  <div class="d-flex gap-2 flex-shrink-0">
+    <%= link_to edit_project_path(project, return_to: request.original_fullpath), class: "btn98 btn98-sm" do %>
+      <i class="bi bi-pencil"></i>
+    <% end %>
+    <%= button_to project_path(project, return_to: request.original_fullpath), method: :delete, class: "text-danger", form: { data: { turbo_confirm: "Are you sure?" } } do %>
+      <i class="bi bi-trash"></i>
+    <% end %>
+  </div>
+</div>

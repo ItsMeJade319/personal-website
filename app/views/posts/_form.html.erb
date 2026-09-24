@@ -2,10 +2,13 @@
   <%= hidden_field_tag :return_to, params[:return_to] %>
 
   <% if post.errors.any? %>
-    <div class="alert alert-danger">
-      <h2 class="h5"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div class="field-border alert98 alert98--danger flex-column align-items-stretch mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <h2 class="h6 mb-0"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      </div>
 
-      <ul class="mb-0">
+      <ul class="mb-0 ps-4">
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -13,44 +16,44 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
+  <div class="field-row-stacked mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :slug, class: "form-label" %>
-    <%= form.text_field :slug, class: "form-control", placeholder: "auto-generated from title if left blank" %>
+  <div class="field-row-stacked mb-3">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, placeholder: "auto-generated from title if left blank" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :body, class: "form-label" %>
-    <%= form.text_area :body, class: "form-control", rows: 10 %>
+  <div class="field-row-stacked mb-3">
+    <%= form.label :body %>
+    <%= form.text_area :body, rows: 10 %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :image, class: "form-label" %>
+  <div class="field-row-stacked mb-3">
+    <%= form.label :image %>
     <% if post.image.attached? %>
       <div class="mb-2">
-        <%= image_tag post.image.variant(resize_to_limit: [ 200, 200 ]), class: "img-thumbnail" %>
+        <%= image_tag post.image.variant(resize_to_limit: [ 200, 200 ]), class: "field-border" %>
       </div>
     <% end %>
-    <%= form.file_field :image, class: "form-control", accept: "image/*" %>
+    <%= form.file_field :image, accept: "image/*" %>
   </div>
 
   <% if post.persisted? %>
     <p class="text-muted small mb-4">
       Currently:
-      <span class="badge <%= post.published? ? "text-bg-success" : "text-bg-warning" %>"><%= post.published? ? "Published" : "Draft" %></span>
+      <span class="status-pill <%= post.published? ? "status-pill--published" : "" %>"><%= post.published? ? "Published" : "Draft" %></span>
     </p>
   <% end %>
 
   <div class="d-flex gap-2">
-    <%= button_tag type: "submit", name: "post[published]", value: "true", class: "btn btn-primary d-inline-flex align-items-center gap-1" do %>
+    <%= button_tag type: "submit", name: "post[published]", value: "true", class: "default d-inline-flex align-items-center gap-1" do %>
       <i class="bi bi-check2-circle"></i>
       Publish
     <% end %>
-    <%= button_tag type: "submit", name: "post[published]", value: "false", class: "btn btn-outline-secondary d-inline-flex align-items-center gap-1" do %>
+    <%= button_tag type: "submit", name: "post[published]", value: "false", class: "d-inline-flex align-items-center gap-1" do %>
       <i class="bi bi-file-earmark"></i>
       Save as draft
     <% end %>

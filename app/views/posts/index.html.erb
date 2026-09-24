@@ -1,7 +1,10 @@
 <% content_for :title, "Blog" %>
 
 <% if notice.present? %>
-  <p class="alert alert-success"><%= notice %></p>
+  <p class="field-border alert98 alert98--success d-flex align-items-center gap-2 mb-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <%= notice %>
+  </p>
 <% end %>
 
 <% if admin_signed_in? %>
@@ -13,17 +16,34 @@
   </div>
 <% end %>
 
-<div class="text-center py-3">
-  <h1 class="mb-4 text-uppercase text-bolder">Blog</h1>
-  <hr>
-</div>
+<div class="window p-0 mb-4">
+  <div class="title-bar">
+    <div class="title-bar-text">C:\Blog &mdash; Notepad</div>
+  </div>
 
-<div id="posts" class="row row-cols-1 row-cols-md-2 g-4">
-  <% @posts.each do |post| %>
-    <%= render post %>
-  <% end %>
-</div>
+  <div class="window-toolbar">
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Help</span>
+  </div>
 
-<% if @posts.none? %>
-  <p class="text-muted">No posts yet.</p>
-<% end %>
+  <div class="d-flex align-items-center gap-2 px-2 pb-2">
+    <span class="small text-secondary" style="font-family: var(--font-chrome);">Address</span>
+    <div class="field-border flex-grow-1 small" style="font-family: var(--font-chrome); padding: 3px 6px;">C:\Posts\</div>
+  </div>
+
+  <div class="window-body">
+    <h1 class="mb-2">Blog</h1>
+    <p class="text-secondary">Notes on what I'm building and learning.</p>
+    <hr>
+
+    <div id="posts" class="row row-cols-1 row-cols-md-2 g-4">
+      <%= render @posts %>
+    </div>
+
+    <% if @posts.none? %>
+      <p class="text-muted mb-0">No posts yet.</p>
+    <% end %>
+  </div>
+</div>

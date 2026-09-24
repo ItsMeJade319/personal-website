@@ -1,0 +1,164 @@
+/*
+ * Bridge classes for UI patterns the vendored 98.css doesn't cover natively:
+ * anchor-as-button, status pills, inline alert boxes, and the navbar chrome.
+ * All colors come from the variables in 98-theme.css.
+ */
+
+.win98-navbar {
+  background: var(--98-face);
+  box-shadow: var(--98-border-raised);
+}
+
+.btn98 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  min-height: 23px;
+  min-width: 75px;
+  padding: 0 12px;
+  background: var(--98-face);
+  color: var(--98-text);
+  text-decoration: none;
+  font-family: "Pixelated MS Sans Serif", Arial;
+  font-size: 11px;
+  box-shadow: var(--98-border-raised);
+}
+
+.btn98:hover {
+  color: var(--98-text);
+  text-decoration: none;
+}
+
+.btn98:active {
+  box-shadow: var(--98-border-raised-active);
+}
+
+.btn98:focus {
+  outline: 1px dotted var(--98-text);
+  outline-offset: -4px;
+}
+
+.btn98-sm {
+  min-height: 21px;
+  min-width: 0;
+  padding: 0 8px;
+}
+
+.btn98.default {
+  box-shadow: var(--98-border-raised-strong);
+}
+
+.btn98.default:active {
+  box-shadow: var(--98-border-raised-strong-active);
+}
+
+/* Primary CTA: Magenta Pop face, Deep Night outline. One per section. */
+.btn98-primary {
+  background: var(--98-primary);
+  color: var(--98-primary-text);
+  outline: 2px solid var(--98-dark);
+  outline-offset: -2px;
+}
+
+.btn98-primary:hover {
+  color: var(--98-primary-text);
+}
+
+.win98-navbar .nav-current {
+  background: var(--98-canvas);
+  box-shadow: var(--98-border-sunken);
+  padding: 2px 8px;
+}
+
+/* Section label chip: VT323 caps on Deep Night. */
+.chip98 {
+  display: inline-block;
+  font-family: var(--font-terminal);
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--98-chip-bg);
+  color: #ffffff;
+  padding: 4px 10px;
+}
+
+/* Terminal line: Mint on Deep Night with a C:\> prompt. */
+.terminal98 {
+  display: block;
+  font-family: var(--font-terminal);
+  font-size: 18px;
+  line-height: 1.4;
+  background: var(--98-terminal-bg);
+  color: var(--98-terminal-text);
+  padding: 6px 10px;
+}
+
+/* Sunken white frame for photos/art, like a MS Paint canvas. */
+.paint-frame {
+  background: var(--98-canvas);
+  box-shadow: var(--98-border-sunken);
+  padding: 8px;
+}
+
+.paint-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.palette-strip {
+  display: flex;
+}
+
+.palette-strip span {
+  flex: 1 1 0;
+  height: 16px;
+}
+
+/* File/Edit/View/Help style menu row under an Explorer window's title bar. */
+.window-toolbar {
+  display: flex;
+  gap: 16px;
+  padding: 4px 8px;
+  font-family: var(--font-chrome);
+  font-size: 11px;
+  color: var(--98-text);
+}
+
+.status-pill {
+  display: inline-block;
+  font-family: "Pixelated MS Sans Serif", Arial;
+  font-size: 10px;
+  line-height: 1.4;
+  padding: 1px 6px;
+  background: var(--98-face);
+  color: var(--98-text);
+  box-shadow: var(--98-border-status-sunken);
+}
+
+.status-pill--published {
+  background: var(--98-title-end);
+  color: var(--98-title-text);
+}
+
+.alert98 {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.alert98--danger {
+  border-left: 4px solid var(--app-danger-accent);
+}
+
+.alert98--success {
+  border-left: 4px solid var(--app-success-accent);
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}

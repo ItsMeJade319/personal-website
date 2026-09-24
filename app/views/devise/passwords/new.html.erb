@@ -8,12 +8,12 @@
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="mb-4">
-        <%= f.label :email, class: "form-label" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <div class="field-row-stacked mb-4">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <%= f.submit "Send me password reset instructions", class: "btn btn-primary w-100" %>
+      <%= f.submit "Send me password reset instructions", class: "default w-100" %>
     <% end %>
 
     <div class="text-center mt-3">

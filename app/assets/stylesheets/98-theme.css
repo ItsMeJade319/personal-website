@@ -1,0 +1,198 @@
+/*
+ * Color theme for the 98.css restyle.
+ *
+ * The vendored 98.css (public/vendor/98css-0.1.21/98.css) hardcodes its colors
+ * (silver, #0a0a0a, grey, #dfdfdf, navy, ...) rather than exposing CSS custom
+ * properties, so this file rebuilds the palette as variables and re-applies it
+ * to the handful of selectors this site actually uses. To reskin the site,
+ * edit ONLY the ink colors in the first :root block below — every bevel and
+ * bridge component (see win98.css) is built from them.
+ */
+
+:root {
+  /* Art Guide palette (pastel Win98 desktop + vaporwave glow) */
+  --98-face: #ece6f8;      /* Window Lilac: base surface — buttons, windows, panels */
+  --98-canvas: #ffffff;    /* sunken field background: text inputs, image frames */
+  --98-highlight: #ffffff; /* outer highlight edge */
+  --98-light: #f7f3ff;     /* soft inner highlight (raised bevel) */
+  --98-shadow: #8e80bd;    /* Bevel Violet: soft inner shadow */
+  --98-dark: #241c3e;      /* Deep Night: outer dark shadow edge, headings, outlines */
+  --98-text: #3a3057;      /* Ink Violet: body text */
+  --98-link: #8f2560;      /* Wine: links, labels, tags */
+  --98-title-start: #5b3fc4; /* Pixel Purple, solid (no gradients) */
+  --98-title-end: #5b3fc4;
+  --98-title-inactive-start: #8e80bd;
+  --98-title-inactive-end: #8e80bd;
+  --98-title-text: #ffffff;
+
+  --98-primary: #b82f78;        /* Magenta Pop: primary buttons */
+  --98-primary-text: #ffffff;
+  --98-accent-stripe: #e98bbd;  /* Bubblegum: title-bar stripe */
+  --98-icon-accent: #c2408f;    /* Hot Pink: icon accents */
+  --98-cyan: #7fd3e6;           /* screens, glitch shadow */
+  --98-sky: #4a8fe0;            /* info icon, details */
+  --98-butter: #f7d97a;         /* folders, stars */
+  --98-mint: #b6f0d0;           /* terminal text, disks */
+  --98-desktop: #bfaef0;        /* Desktop Lilac: wallpaper */
+  --98-terminal-bg: #241c3e;
+  --98-terminal-text: #b6f0d0;
+  --98-chip-bg: #241c3e;
+
+  --font-display: "Tinos", "Times New Roman", serif;
+  --font-body: Verdana, Geneva, sans-serif;
+  --font-chrome: "Pixelify Sans", "Pixelated MS Sans Serif", Arial;
+  --font-terminal: "VT323", monospace;
+
+  --app-danger-accent: #aa0000;
+  --app-success-accent: #007a00;
+}
+
+:root {
+  /* Composited bevels — derived from the ink colors above, shouldn't need editing directly. */
+  --98-border-raised: inset -1px -1px var(--98-dark), inset 1px 1px var(--98-highlight),
+    inset -2px -2px var(--98-shadow), inset 2px 2px var(--98-light);
+  --98-border-raised-active: inset -1px -1px var(--98-highlight), inset 1px 1px var(--98-dark),
+    inset -2px -2px var(--98-light), inset 2px 2px var(--98-shadow);
+  --98-border-raised-strong: inset -2px -2px var(--98-dark), inset 1px 1px var(--98-dark),
+    inset 2px 2px var(--98-highlight), inset -3px -3px var(--98-shadow), inset 3px 3px var(--98-light);
+  --98-border-raised-strong-active: inset 2px 2px var(--98-dark), inset -1px -1px var(--98-dark),
+    inset -2px -2px var(--98-highlight), inset 3px 3px var(--98-shadow), inset -3px -3px var(--98-light);
+  --98-border-window: inset -1px -1px var(--98-dark), inset 1px 1px var(--98-light),
+    inset -2px -2px var(--98-shadow), inset 2px 2px var(--98-highlight);
+  --98-border-sunken: inset -1px -1px var(--98-highlight), inset 1px 1px var(--98-shadow),
+    inset -2px -2px var(--98-face), inset 2px 2px var(--98-dark);
+  --98-border-status-sunken: inset -1px -1px var(--98-light), inset 1px 1px var(--98-shadow);
+}
+
+/* Re-skin of the vendored 98.css selectors this app actually renders. */
+
+body {
+  color: var(--98-text);
+  font-family: var(--font-body);
+  background-color: var(--98-desktop);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.32) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+a {
+  color: var(--98-link);
+}
+
+button,
+input[type="reset"],
+input[type="submit"] {
+  background: var(--98-face);
+  box-shadow: var(--98-border-raised);
+}
+
+button.default,
+input[type="reset"].default,
+input[type="submit"].default {
+  box-shadow: var(--98-border-raised-strong);
+}
+
+button:not(:disabled):active,
+input[type="reset"]:not(:disabled):active,
+input[type="submit"]:not(:disabled):active {
+  box-shadow: var(--98-border-raised-active);
+}
+
+button.default:not(:disabled):active,
+input[type="reset"].default:not(:disabled):active,
+input[type="submit"].default:not(:disabled):active {
+  box-shadow: var(--98-border-raised-strong-active);
+}
+
+.window {
+  background: var(--98-face);
+  box-shadow: var(--98-border-window);
+}
+
+.title-bar {
+  background: var(--98-title-start);
+  min-height: 32px;
+  box-sizing: border-box;
+  box-shadow: inset 0 -3px 0 var(--98-accent-stripe);
+}
+
+.title-bar.inactive {
+  background: var(--98-title-inactive-start);
+}
+
+.title-bar-text {
+  color: var(--98-title-text);
+}
+
+.title-bar,
+button,
+input,
+label,
+legend,
+li[role="tab"],
+option,
+select,
+table,
+textarea,
+ul.tree-view {
+  font-family: var(--font-chrome);
+}
+
+table > thead > tr > * {
+  background: var(--98-face);
+  box-shadow: var(--98-border-raised);
+}
+
+legend {
+  background: var(--98-face);
+}
+
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="url"],
+select,
+textarea {
+  background-color: var(--98-canvas);
+  box-shadow: var(--98-border-sunken);
+}
+
+input[type="email"]:disabled,
+input[type="email"]:read-only,
+input[type="number"]:disabled,
+input[type="number"]:read-only,
+input[type="password"]:disabled,
+input[type="password"]:read-only,
+input[type="search"]:disabled,
+input[type="search"]:read-only,
+input[type="tel"]:disabled,
+input[type="tel"]:read-only,
+input[type="text"]:disabled,
+input[type="text"]:read-only,
+input[type="url"]:disabled,
+input[type="url"]:read-only,
+textarea:disabled {
+  background-color: var(--98-face);
+}
+
+.field-border {
+  background: var(--98-canvas);
+  box-shadow: var(--98-border-sunken);
+}
+
+.field-border-disabled {
+  background: var(--98-face);
+  box-shadow: var(--98-border-sunken);
+}
+
+.status-bar-field {
+  box-shadow: var(--98-border-status-sunken);
+}

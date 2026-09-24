@@ -1,63 +1,75 @@
 <div class="py-4">
-  <p class="fw-bold text-secondary text-uppercase">Career Highlights</p>
-  <hr>
-
-  <div class="d-flex justify-content-between border-bottom border-2 align-items-center pb-3">
-    <div class="d-flex align-items-center gap-3">
-      <%= image_tag "icons/acumatica_logo.svg", alt: "", class: "flex-shrink-0", style: "height: 2.5rem; width: 2.5rem; object-fit: contain;" %>
-      <div>
-        <p class="fw-bold mb-0">Acumatica Certefied Consultant</p>
-        <p class="fw-bold text-secondary fs-6 mb-0">Revive ERP</p>
-      </div>
+  <div class="window p-0">
+    <div class="title-bar">
+      <div class="title-bar-text">My Toolbox &mdash; Explorer</div>
     </div>
 
-    <p class="mb-0 text-secondary">Aug 2022 - Present</p>
-  </div>
-
-  <div class="d-flex justify-content-between border-bottom border-2 align-items-center py-3">
-    <div class="d-flex align-items-center gap-3">
-      <%= image_tag "icons/roofcorp_logo.svg", alt: "", class: "flex-shrink-0", style: "height: 2.5rem; width: 2.5rem; object-fit: contain;" %>
-      <div>
-        <p class="fw-bold mb-0">Director of Special Projects</p>
-        <p class="fw-bold text-secondary fs-6 mb-0">ROOFCORP</p>
-      </div>
+    <div class="window-toolbar">
+      <span>File</span>
+      <span>Edit</span>
+      <span>View</span>
+      <span>Help</span>
     </div>
 
-    <p class="mb-0 text-secondary">Sep 2019 - Jul 2022</p>
-  </div>
+    <div class="window-body m-0">
+      <div class="table-responsive">
+        <table class="w-100">
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>What I use it for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center gap-2 py-2">
+                  <%= image_tag "icons/32px/disk-pink.png", alt: "", class: "flex-shrink-0 pixel-icon", style: "height: 1.75rem; width: 1.75rem; object-fit: contain;" %>
+                  <div>
+                    <p class="fw-bold mb-0">Ruby on Rails</p>
+                    <span class="chip98" style="font-size: 11px; padding: 1px 6px;">Main</span>
+                  </div>
+                </div>
+              </td>
+              <td class="text-secondary">My main framework for building web apps</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center gap-2 py-2">
+                  <%= image_tag "icons/32px/disk-blue.png", alt: "", class: "flex-shrink-0 pixel-icon", style: "height: 1.75rem; width: 1.75rem; object-fit: contain;" %>
+                  <p class="fw-bold mb-0">PostgreSQL</p>
+                </div>
+              </td>
+              <td class="text-secondary">Databases and data modeling</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center gap-2 py-2">
+                  <%= image_tag "icons/32px/disk-purple.png", alt: "", class: "flex-shrink-0 pixel-icon", style: "height: 1.75rem; width: 1.75rem; object-fit: contain;" %>
+                  <div>
+                    <p class="fw-bold mb-0">Bootstrap</p>
+                    <span class="chip98" style="font-size: 11px; padding: 1px 6px;">Favorite</span>
+                  </div>
+                </div>
+              </td>
+              <td class="text-secondary">My go-to for fast, clean layouts</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center gap-2 py-2">
+                  <%= image_tag "icons/32px/disk-mint.png", alt: "", class: "flex-shrink-0 pixel-icon", style: "height: 1.75rem; width: 1.75rem; object-fit: contain;" %>
+                  <p class="fw-bold mb-0">Tailwind CSS</p>
+                </div>
+              </td>
+              <td class="text-secondary">Utility-first styling when a project uses it</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <div class="d-flex justify-content-between border-bottom border-2 align-items-center py-3">
-    <div class="d-flex align-items-center gap-3">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-journal-bookmark-fill flex-shrink-0" viewBox="0 0 16 16" style="height: 2.5rem; width: 2.5rem;">
-        <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
-        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
-        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
-      </svg>
-
-      <div>
-        <p class="fw-bold mb-0">Manager</p>
-        <p class="fw-bold text-secondary fs-6 mb-0">BPO Leader SAS</p>
+      <div class="terminal98">
+        C:\&gt; type currently_learning.txt&nbsp; Sharpening my business logic skills: writing Rails code that models real-world rules clearly.
       </div>
     </div>
-
-    <p class="mb-0 text-secondary">Feb 2018 - Aug 2019</p>
   </div>
-
-  <div class="d-flex justify-content-between border-bottom border-2 align-items-center py-3">
-    <div class="d-flex align-items-center gap-3">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-journal-bookmark-fill flex-shrink-0" viewBox="0 0 16 16" style="height: 2.5rem; width: 2.5rem;">
-        <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
-        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
-        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
-      </svg>
-
-      <div>
-        <p class="fw-bold mb-0">General Manager</p>
-        <p class="fw-bold text-secondary fs-6 mb-0">Avec Staffing</p>
-      </div>
-    </div>
-
-    <p class="mb-0 text-secondary">Jun 2017 - Mar 2018</p>
-  </div>
-
 </div>

@@ -1,7 +1,7 @@
 .admin-header {
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 2px groove var(--98-shadow);
 }
 
 .admin-title {
@@ -9,7 +9,7 @@
 }
 
 .admin-subtitle {
-  color: #6c757d;
+  color: var(--98-shadow);
 }
 
 .stat-card {
@@ -18,10 +18,8 @@
   gap: 1rem;
   height: 100%;
   padding: 1.1rem 1.35rem;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  background-color: var(--98-face);
+  box-shadow: var(--98-border-raised);
 }
 
 .stat-icon {
@@ -31,10 +29,10 @@
   flex-shrink: 0;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 0.75rem;
-  background-color: #f1f3f5;
+  background-color: var(--98-canvas);
+  box-shadow: var(--98-border-sunken);
   font-size: 1.2rem;
-  color: #495057;
+  color: var(--98-text);
 }
 
 .stat-value {
@@ -51,10 +49,8 @@
 }
 
 .admin-panel {
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  background-color: var(--98-face);
+  box-shadow: var(--98-border-raised);
   overflow: hidden;
 }
 
@@ -63,8 +59,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid #dee2e6;
+  padding: 0.6rem 1.25rem;
+  background: linear-gradient(90deg, var(--98-title-start), var(--98-title-end));
+  color: var(--98-title-text);
 }
 
 .admin-list-item {
@@ -72,7 +69,7 @@
   align-items: center;
   gap: 0.85rem;
   padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid #f1f3f5;
+  border-bottom: 1px solid var(--98-shadow);
 }
 
 .admin-list-item:last-child {
@@ -82,7 +79,6 @@
 .admin-thumb {
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 0.5rem;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -93,9 +89,9 @@
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: 0.5rem;
-  background-color: #f1f3f5;
-  color: #adb5bd;
+  background-color: var(--98-canvas);
+  box-shadow: var(--98-border-sunken);
+  color: var(--98-shadow);
   flex-shrink: 0;
   font-size: 1.1rem;
 }
@@ -103,14 +99,12 @@
 .admin-list-empty {
   padding: 2rem 1.25rem;
   text-align: center;
-  color: #6c757d;
+  color: var(--98-shadow);
 }
 
 .admin-form-card {
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  background-color: var(--98-face);
+  box-shadow: var(--98-border-raised);
   padding: 1.5rem;
 }
 
@@ -124,9 +118,7 @@
 .admin-auth-card {
   width: 100%;
   max-width: 380px;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  background-color: var(--98-face);
+  box-shadow: var(--98-border-raised);
   padding: 2rem;
 }

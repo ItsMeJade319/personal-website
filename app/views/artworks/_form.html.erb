@@ -1,0 +1,77 @@
+<%= form_with(model: artwork) do |form| %>
+  <%= hidden_field_tag :return_to, params[:return_to] %>
+
+  <% if artwork.errors.any? %>
+    <div class="field-border alert98 alert98--danger flex-column align-items-stretch mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <h2 class="h6 mb-0"><%= pluralize(artwork.errors.count, "error") %> prohibited this artwork from being saved:</h2>
+      </div>
+
+      <ul class="mb-0 ps-4">
+        <% artwork.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, placeholder: "auto-generated from title if left blank" %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 mb-3">
+      <div class="field-row-stacked">
+        <%= form.label :medium %>
+        <%= form.text_field :medium, placeholder: "e.g. Oil on canvas" %>
+      </div>
+    </div>
+
+    <div class="col-sm-6 mb-3">
+      <div class="field-row-stacked">
+        <%= form.label :year %>
+        <%= form.number_field :year %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 6 %>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :image %>
+    <% if artwork.image.attached? %>
+      <div class="mb-2">
+        <%= image_tag artwork.image.variant(resize_to_limit: [ 200, 200 ]), class: "field-border" %>
+      </div>
+    <% end %>
+    <%= form.file_field :image, accept: "image/*" %>
+  </div>
+
+  <% if artwork.persisted? %>
+    <p class="text-muted small mb-4">
+      Currently:
+      <span class="status-pill <%= artwork.published? ? "status-pill--published" : "" %>"><%= artwork.published? ? "Published" : "Draft" %></span>
+    </p>
+  <% end %>
+
+  <div class="d-flex gap-2">
+    <%= button_tag type: "submit", name: "artwork[published]", value: "true", class: "default d-inline-flex align-items-center gap-1" do %>
+      <i class="bi bi-check2-circle"></i>
+      Publish
+    <% end %>
+    <%= button_tag type: "submit", name: "artwork[published]", value: "false", class: "d-inline-flex align-items-center gap-1" do %>
+      <i class="bi bi-file-earmark"></i>
+      Save as draft
+    <% end %>
+  </div>
+<% end %>

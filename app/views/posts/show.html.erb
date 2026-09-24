@@ -1,28 +1,42 @@
 <% content_for :title, @post.title %>
 
 <% if notice.present? %>
-  <p class="alert alert-success"><%= notice %></p>
+  <p class="field-border alert98 alert98--success d-flex align-items-center gap-2 mb-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <%= notice %>
+  </p>
 <% end %>
 
-<article class="pt-3">
-  <div class="d-flex justify-content-between align-items-start gap-3">
+<div class="d-flex gap-2 pb-3">
+  <%= link_to posts_path, class: "btn98 btn98-sm d-inline-flex align-items-center gap-1 flex-shrink-0" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+    </svg>
+    Back to posts
+  <% end %>
 
-      <h1>
-        <%= @post.title %>
-        <% unless @post.published? %>
-          <span class="badge text-bg-warning">Draft</span>
-        <% end %>
-      </h1>
+  <div class="field-border flex-grow-1 small" style="font-family: var(--font-chrome); padding: 3px 6px; min-width: 200px;">
+    C:\Portfolio\<%= @post.slug %>.exe
+  </div>
+</div>
+
+
+<div class="title-bar">
+  <div class="title-bar-text"><%= @post.slug.tr("-", "_") %>.exe</div>
+</div>
+<article class="pt-3 window p-3">
+  <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+    <span class="terminal98 d-inline-block">C:\&gt; type <%= @post.slug.tr("-", "_") %>.txt</span>
 
     <% if admin_signed_in? %>
       <div class="d-flex gap-2 flex-shrink-0">
-        <%= link_to edit_post_path(@post, return_to: request.original_fullpath), class: "btn btn-outline-secondary", "aria-label": "Edit this post", title: "Edit this post" do %>
+        <%= link_to edit_post_path(@post, return_to: request.original_fullpath), class: "btn98 btn98-sm", "aria-label": "Edit this post", title: "Edit this post" do %>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
           </svg>
         <% end %>
-        <%= button_to @post, method: :delete, class: "btn btn-outline-danger", "aria-label": "Destroy this post", title: "Destroy this post", form: { data: { turbo_confirm: "Are you sure?" } } do %>
+        <%= button_to @post, method: :delete, class: "text-danger", "aria-label": "Destroy this post", title: "Destroy this post", form: { data: { turbo_confirm: "Are you sure?" } } do %>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
             <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
           </svg>
@@ -31,30 +45,33 @@
     <% end %>
   </div>
 
+  <h1 class="mb-2">
+    <%= @post.title %>
+    <% unless @post.published? %>
+      <span class="status-pill">Draft</span>
+    <% end %>
+  </h1>
+
   <% if @post.published_at.present? %>
-    <p class="text-muted"><%= @post.published_at.strftime("%B %-d, %Y") %></p>
+    <p class="text-secondary mb-3"><%= @post.published_at.strftime("%B %-d, %Y") %></p>
   <% end %>
 
-  <section class="guide-step-card mt-4">
-    <% if @post.image.attached? %>
-      <div class="guide-step-image-wrap">
-        <%= image_tag @post.image.variant(resize_to_limit: [ 900, 600 ]), class: "guide-step-image" %>
+  <div class="window p-0 mb-4">
+    <div class="title-bar" style="min-height: 24px;">
+      <div class="title-bar-text small">cover.jpg</div>
+    </div>
+    <div class="window-body p-2 pb-3">
+      <div class="paint-frame d-flex align-items-center justify-content-center" style="min-height: 260px;">
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image.variant(resize_to_limit: [ 900, 600 ]), style: "max-width: 100%; height: auto;" %>
+        <% else %>
+          <div class="text-center text-secondary">
+            <i class="bi bi-image fs-1"></i>
+            <p class="small mb-0">(COVER IMAGE)</p>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-
-    <div class="guide-step-instruction">
       <%= simple_format(@post.body) %>
     </div>
-  </section>
+  </div>
 </article>
-
-<hr>
-
-<div class="d-flex gap-2 align-items-center">
-  <%= link_to posts_path, class: "align-self-start text-body text-decoration-none d-inline-flex align-items-center gap-1" do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
-    </svg>
-    Back to blog
-  <% end %>
-</div>

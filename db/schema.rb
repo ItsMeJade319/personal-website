@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_22_121115) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_25_090004) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -51,27 +51,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_22_121115) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "guide_steps", force: :cascade do |t|
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.integer "guide_id", null: false
-    t.integer "position", default: 0, null: false
-    t.string "title"
-    t.datetime "updated_at", null: false
-    t.index ["guide_id", "position"], name: "index_guide_steps_on_guide_id_and_position"
-    t.index ["guide_id"], name: "index_guide_steps_on_guide_id"
-  end
-
-  create_table "guides", force: :cascade do |t|
+  create_table "artworks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
+    t.string "medium"
     t.boolean "published", default: false, null: false
     t.datetime "published_at"
     t.string "slug"
     t.string "title"
     t.datetime "updated_at", null: false
-    t.index ["published_at"], name: "index_guides_on_published_at"
-    t.index ["slug"], name: "index_guides_on_slug", unique: true
+    t.integer "year"
+    t.index ["published_at"], name: "index_artworks_on_published_at"
+    t.index ["slug"], name: "index_artworks_on_slug", unique: true
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.integer "position", default: 0, null: false
+    t.integer "project_id", null: false
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.index ["project_id", "position"], name: "index_features_on_project_id_and_position"
+    t.index ["project_id"], name: "index_features_on_project_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -86,7 +88,40 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_22_121115) do
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
+  create_table "project_technologies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "project_id", null: false
+    t.integer "technology_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id", "technology_id"], name: "index_project_technologies_on_project_id_and_technology_id", unique: true
+    t.index ["project_id"], name: "index_project_technologies_on_project_id"
+    t.index ["technology_id"], name: "index_project_technologies_on_technology_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "demo_url"
+    t.text "description"
+    t.string "github_url"
+    t.boolean "published", default: false, null: false
+    t.datetime "published_at"
+    t.string "slug"
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.index ["published_at"], name: "index_projects_on_published_at"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
+  end
+
+  create_table "technologies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_technologies_on_name", unique: true
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "guide_steps", "guides"
+  add_foreign_key "features", "projects"
+  add_foreign_key "project_technologies", "projects"
+  add_foreign_key "project_technologies", "technologies"
 end

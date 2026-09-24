@@ -1,0 +1,95 @@
+<%= form_with(model: project) do |form| %>
+  <%= hidden_field_tag :return_to, params[:return_to] %>
+
+  <% if project.errors.any? %>
+    <div class="field-border alert98 alert98--danger flex-column align-items-stretch mb-3">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <h2 class="h6 mb-0"><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      </div>
+
+      <ul class="mb-0 ps-4">
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :slug %>
+    <%= form.text_field :slug, placeholder: "auto-generated from title if left blank" %>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :description, "Intro" %>
+    <%= form.text_area :description, rows: 4 %>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :github_url, "GitHub repo link" %>
+    <%= form.url_field :github_url, placeholder: "https://github.com/username/repo" %>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :demo_url, "Live demo link" %>
+    <%= form.url_field :demo_url, placeholder: "https://your-deployed-app.example.com" %>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :technology_list, "Technologies" %>
+    <%= form.text_field :technology_list, placeholder: "Ruby on Rails, PostgreSQL, Bootstrap" %>
+    <p class="text-muted small mb-0">Comma-separated. New technologies are created automatically.</p>
+  </div>
+
+  <div class="field-row-stacked mb-3">
+    <%= form.label :image, "Cover image" %>
+    <% if project.image.attached? %>
+      <div class="mb-2">
+        <%= image_tag project.image.variant(resize_to_limit: [ 200, 200 ]), class: "field-border" %>
+      </div>
+    <% end %>
+    <%= form.file_field :image, accept: "image/*" %>
+  </div>
+
+  <% if project.persisted? %>
+    <p class="text-muted small mb-4">
+      Currently:
+      <span class="status-pill <%= project.published? ? "status-pill--published" : "" %>"><%= project.published? ? "Published" : "Draft" %></span>
+    </p>
+  <% end %>
+
+  <div class="mb-4" data-controller="nested-fields">
+    <h2 class="h5">Features</h2>
+
+    <div data-nested-fields-target="container">
+      <%= form.fields_for :features do |feature_form| %>
+        <%= render "feature_fields", form: feature_form %>
+      <% end %>
+    </div>
+
+    <template data-nested-fields-target="template">
+      <%= form.fields_for :features, Feature.new, child_index: "NEW_RECORD" do |feature_form| %>
+        <%= render "feature_fields", form: feature_form %>
+      <% end %>
+    </template>
+
+    <button type="button" class="btn98-sm" data-action="nested-fields#add">Add feature</button>
+  </div>
+
+  <div class="d-flex gap-2">
+    <%= button_tag type: "submit", name: "project[published]", value: "true", class: "default d-inline-flex align-items-center gap-1" do %>
+      <i class="bi bi-check2-circle"></i>
+      Publish
+    <% end %>
+    <%= button_tag type: "submit", name: "project[published]", value: "false", class: "d-inline-flex align-items-center gap-1" do %>
+      <i class="bi bi-file-earmark"></i>
+      Save as draft
+    <% end %>
+  </div>
+<% end %>

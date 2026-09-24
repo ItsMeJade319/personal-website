@@ -1,19 +1,58 @@
-<div class="row py-4 gap-3 align-items-center">
-
-  <div class="col">
-    <%= image_tag "placeholders/person_placeholder.jpg", alt: "", class: "img-fluid rounded" %>
+<div class="window mb-4">
+  <div class="title-bar">
+    <div class="title-bar-text">about_me.exe</div>
   </div>
 
-  <div class="col-8">
-    <div>
-      <div class="pb-4">
-        <p class="fs-5 mb-1">About</p>
-        <p class="fs-3 fw-bold mb-1">Evida Suntoyo De Espinosa</p>
-        <p class="fs-5 fw-light mb-0">Acumatica Implementation Consultant — Construction & Field Service</p>
+  <div class="window-body">
+    <div class="d-flex flex-wrap align-items-stretch gap-4 py-2">
+
+      <div style="flex: 1 1 280px; max-width: 320px;">
+        <div class="window p-0">
+          <div class="title-bar" style="min-height: 24px;">
+            <div class="title-bar-text small">agung.bmp &mdash; Paint</div>
+          </div>
+          <div class="window-body m-2">
+            <div class="paint-frame">
+              <%= image_tag "profile/agung.jpeg", alt: "Agung Dharmawan", class: "img-fluid" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="palette-strip mt-2">
+          <span style="background: var(--98-dark);"></span>
+          <span style="background: var(--98-link);"></span>
+          <span style="background: var(--98-title-start);"></span>
+          <span style="background: var(--98-primary);"></span>
+          <span style="background: var(--98-icon-accent);"></span>
+          <span style="background: var(--98-sky);"></span>
+          <span style="background: var(--98-cyan);"></span>
+          <span style="background: var(--98-mint);"></span>
+        </div>
       </div>
-      <p class="fs-6 fst-normal">I help construction and field service teams get live on Acumatica ERP — from rollout and configuration through user adoption. My path here ran through operations and general management, which shapes how I approach every implementation: it's not just about the software, it's about the people who have to use it.</p>
-      <p class="fs-6 fw-lighter text-secondary">Based in Colombia</p>
+
+      <div class="d-flex flex-column" style="flex: 2 1 420px;">
+        <div>
+          <span class="terminal98 d-inline-block mb-3">C:\&gt; ABOUT</span>
+
+          <div class="d-flex flex-wrap column-gap-2 align-items-baseline">
+            <h2 class="mb-1">Agung Dharmawan</h2>
+            <h2 class="mb-1 fst-italic" style="color: var(--98-link);">Loaiza Sydney</h2>
+          </div>
+
+          <p class="fw-bold mb-3">Full-Stack Developer &mdash; Ruby on Rails</p>
+
+          <p class="fs-6">
+            Hi, I'm Agung, a full-stack developer based in Bali. I work mostly with Ruby on Rails, building web apps from the database all the way to the screen. I'm at the start of my career and love learning: new frameworks, new languages and better ways to solve problems. I'm open to remote work with teams anywhere.
+          </p>
+        </div>
+
+        <div class="status-bar mt-auto pt-4">
+          <p class="status-bar-field mb-0">Bali, Indonesia</p>
+          <p class="status-bar-field mb-0">Ruby on Rails</p>
+          <p class="status-bar-field mb-0">Open to remote</p>
+        </div>
+      </div>
+
     </div>
   </div>
-
 </div>

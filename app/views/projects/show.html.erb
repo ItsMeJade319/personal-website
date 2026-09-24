@@ -1,0 +1,118 @@
+<% content_for :title, @project.title %>
+
+<% if notice.present? %>
+  <p class="field-border alert98 alert98--success d-flex align-items-center gap-2 mb-3">
+    <i class="bi bi-check-circle-fill"></i>
+    <%= notice %>
+  </p>
+<% end %>
+
+<div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+  <%= link_to projects_path, class: "btn98 btn98-sm d-inline-flex align-items-center gap-1 flex-shrink-0" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+    </svg>
+    Back to Portfolio
+  <% end %>
+
+  <div class="field-border flex-grow-1 small" style="font-family: var(--font-chrome); padding: 3px 6px; min-width: 200px;">
+    C:\Portfolio\<%= @project.slug %>.exe
+  </div>
+
+  <% if admin_signed_in? %>
+    <div class="d-flex gap-2 flex-shrink-0">
+      <%= link_to edit_project_path(@project, return_to: request.original_fullpath), class: "btn98 btn98-sm", "aria-label": "Edit this project", title: "Edit this project" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+        </svg>
+      <% end %>
+      <%= button_to @project, method: :delete, class: "text-danger", "aria-label": "Destroy this project", title: "Destroy this project", form: { data: { turbo_confirm: "Are you sure?" } } do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+          <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+        </svg>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="window p-0 mb-4">
+  <div class="title-bar">
+    <div class="title-bar-text"><%= @project.slug.tr("-", "_") %>.exe</div>
+  </div>
+
+  <div class="window-body">
+    <div class="row g-4">
+      <div class="col-md-7">
+        <span class="terminal98 d-inline-block mb-3">C:\&gt; run <%= @project.slug.tr("-", "_") %>.exe</span>
+
+        <h1 class="mb-3">
+          <%= @project.title %>
+          <% unless @project.published? %>
+            <span class="status-pill">Draft</span>
+          <% end %>
+        </h1>
+
+        <% if @project.description.present? %>
+          <div class="mb-3"><%= simple_format(@project.description) %></div>
+        <% end %>
+
+        <% if @project.technologies.any? %>
+          <div class="d-flex gap-1 flex-wrap mb-3">
+            <% @project.technologies.each do |technology| %>
+              <span class="status-pill"><%= technology.name %></span>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="d-flex gap-2 flex-wrap">
+          <%= link_to @project.demo_url.presence || "#", class: "btn98 btn98-primary d-inline-flex align-items-center gap-1",
+            target: (@project.demo_url.present? ? "_blank" : nil), rel: (@project.demo_url.present? ? "noopener" : nil) do %>
+            Live demo
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+            </svg>
+          <% end %>
+          <%= link_to "View code", @project.github_url.presence || "#", class: "btn98",
+            target: (@project.github_url.present? ? "_blank" : nil), rel: (@project.github_url.present? ? "noopener" : nil) %>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="window p-0">
+          <div class="title-bar" style="min-height: 24px;">
+            <div class="title-bar-text small">screenshot.png &mdash; Paint</div>
+          </div>
+          <div class="window-body m-2">
+            <div class="paint-frame d-flex align-items-center justify-content-center" style="min-height: 220px;">
+              <% if @project.image.attached? %>
+                <%= image_tag @project.image.variant(resize_to_limit: [ 600, 600 ]), style: "max-width: 100%; height: auto;" %>
+              <% else %>
+                <div class="text-center text-secondary">
+                  <i class="bi bi-image fs-1"></i>
+                  <p class="small mb-0">[screenshot]</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-bar mt-4">
+      <% if @project.published_at.present? %>
+        <p class="status-bar-field mb-0">Released <%= @project.published_at.strftime("%B %-d, %Y") %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<span class="chip98 mb-3 d-inline-block">How I Built It</span>
+
+<div class="d-flex flex-column gap-4">
+  <%= render partial: "feature", collection: @project.features, as: :feature %>
+
+  <% if @project.features.none? %>
+    <p class="text-muted">No steps documented yet.</p>
+  <% end %>
+</div>

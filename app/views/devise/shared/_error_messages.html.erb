@@ -1,7 +1,10 @@
 <% if resource.errors.any? %>
-  <div class="alert alert-danger">
-    <p class="fw-bold mb-1"><%= pluralize(resource.errors.count, "error") %> prohibited this form from being saved:</p>
-    <ul class="mb-0">
+  <div class="field-border alert98 alert98--danger flex-column align-items-stretch mb-3">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <p class="fw-bold mb-0"><%= pluralize(resource.errors.count, "error") %> prohibited this form from being saved:</p>
+    </div>
+    <ul class="mb-0 ps-4">
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>

@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Adds/removes nested fieldsets (e.g. guide steps) without a server round-trip.
+// Adds/removes nested fieldsets (e.g. project features) without a server round-trip.
 export default class extends Controller {
   static targets = ["container", "template", "fields"]
 

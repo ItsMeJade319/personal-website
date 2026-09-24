@@ -1,0 +1,40 @@
+<div id="<%= dom_id project %>" class="col">
+  <div class="window p-0 h-100 d-flex flex-column">
+    <div class="title-bar" style="min-height: 24px;">
+      <div class="title-bar-text small">project_<%= format("%02d", (local_assigns[:project_counter] || 0) + 1) %>.exe</div>
+    </div>
+
+    <div class="window-body d-flex flex-column flex-grow-1">
+      <% if project.image.attached? %>
+        <div class="paint-frame mb-3">
+          <%= image_tag project.image.variant(resize_to_limit: [ 400, 400 ]), style: "height: 160px; width: 100%; object-fit: cover;" %>
+        </div>
+      <% end %>
+
+      <h3 class="h6 mb-1">
+        <%= link_to project.title, project, class: "text-decoration-none text-dark" %>
+      </h3>
+      <p class="text-secondary small flex-grow-1"><%= truncate(project.description.to_s, length: 140, separator: " ") %></p>
+
+      <% if project.technologies.any? %>
+        <div class="d-flex gap-1 flex-wrap mb-2">
+          <% project.technologies.each do |technology| %>
+            <span class="status-pill"><%= technology.name %></span>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="d-flex gap-2 flex-wrap mb-3">
+        <%= link_to project, class: "btn98 btn98-primary btn98-sm d-inline-flex align-items-center gap-1" do %>
+          View project
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+          </svg>
+        <% end %>
+        <%= link_to "Code", project.github_url.presence || "#", class: "btn98 btn98-sm",
+          target: (project.github_url.present? ? "_blank" : nil), rel: (project.github_url.present? ? "noopener" : nil) %>
+      </div>
+
+    </div>
+  </div>
+</div>
