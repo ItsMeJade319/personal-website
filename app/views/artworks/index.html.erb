@@ -33,7 +33,7 @@
     <div class="field-border flex-grow-1 small" style="font-family: var(--font-chrome); padding: 3px 6px;">C:\Artworks\</div>
   </div>
 
-  <div class="window-body">
+  <div class="window-body pb-3">
     <h1 class="mb-2">Gallery</h1>
     <p class="text-secondary">Art is how I unwind, and it's where a lot of my eye for color and layout comes from.</p>
     <hr>
@@ -42,8 +42,10 @@
       <%= render @artworks %>
     </div>
 
-    <% if @artworks.none? %>
-      <p class="text-muted mb-0">No artwork yet.</p>
-    <% end %>
   </div>
+    <% if @artworks.none? %>
+    <div class="p-4">
+      <p class="text-muted mb-0">No artwork yet.</p>
+    </div>
+    <% end %>
 </div>

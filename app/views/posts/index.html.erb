@@ -33,7 +33,7 @@
     <div class="field-border flex-grow-1 small" style="font-family: var(--font-chrome); padding: 3px 6px;">C:\Posts\</div>
   </div>
 
-  <div class="window-body">
+  <div class="window-body pb-3">
     <h1 class="mb-2">Blog</h1>
     <p class="text-secondary">Notes on what I'm building and learning.</p>
     <hr>
@@ -42,8 +42,11 @@
       <%= render @posts %>
     </div>
 
-    <% if @posts.none? %>
-      <p class="text-muted mb-0">No posts yet.</p>
-    <% end %>
   </div>
+
+    <% if @posts.none? %>
+    <div class="p-4">
+      <p class="text-muted mb-0">No posts yet.</p>
+    </div>
+    <% end %>
 </div>

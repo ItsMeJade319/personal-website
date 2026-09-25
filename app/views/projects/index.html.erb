@@ -33,7 +33,7 @@
     <div class="field-border flex-grow-1 small" style="font-family: var(--font-chrome); padding: 3px 6px;">C:\Projects\</div>
   </div>
 
-  <div class="window-body">
+  <div class="window-body pb-3">
     <h1 class="mb-2">Portfolio</h1>
     <p class="text-secondary">Things I've built while learning full-stack development</p>
     <hr>
@@ -42,8 +42,10 @@
       <%= render partial: "projects/project_card", collection: @projects, as: :project %>
     </div>
 
-    <% if @projects.none? %>
-      <p class="text-muted mb-0">No projects yet.</p>
-    <% end %>
   </div>
+    <% if @projects.none? %>
+    <div class="p-4">
+      <p class="text-muted mb-0">No projects yet.</p>
+    </div>
+    <% end %>
 </div>

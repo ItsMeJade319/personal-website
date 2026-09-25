@@ -36,7 +36,7 @@
   <% end %>
 </div>
 
-<div class="window p-0 mb-4">
+<div class="window p-0 mb-4 pb-2">
   <div class="title-bar">
     <div class="title-bar-text"><%= @project.slug.tr("-", "_") %>.exe</div>
   </div>
@@ -107,7 +107,7 @@
   </div>
 </div>
 
-<span class="chip98 mb-3 d-inline-block">How I Built It</span>
+<span class="chip98 mb-3 d-inline-block">Detailst</span>
 
 <div class="d-flex flex-column gap-4">
   <%= render partial: "feature", collection: @project.features, as: :feature %>

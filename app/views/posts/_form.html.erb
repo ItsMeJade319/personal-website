@@ -33,7 +33,7 @@
 
   <div class="field-row-stacked mb-3">
     <%= form.label :image %>
-    <% if post.image.attached? %>
+    <% if post.persisted? && post.image.attached? %>
       <div class="mb-2">
         <%= image_tag post.image.variant(resize_to_limit: [ 200, 200 ]), class: "field-border" %>
       </div>

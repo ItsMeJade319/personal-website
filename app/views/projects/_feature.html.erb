@@ -1,10 +1,10 @@
 <div class="window p-0">
   <div class="title-bar">
-    <div class="title-bar-text">step_<%= format("%02d", (local_assigns[:feature_counter] || 0) + 1) %>.txt</div>
+    <div class="title-bar-text">detail_<%= format("%02d", (local_assigns[:feature_counter] || 0) + 1) %>.txt</div>
   </div>
 
   <div class="window-body">
-    <div class="row g-4 align-items-center">
+    <div class="row g-4">
       <div class="col-md-5">
         <div class="paint-frame d-flex align-items-center justify-content-center" style="min-height: 180px;">
           <% if feature.image.attached? %>
@@ -19,9 +19,6 @@
       </div>
 
       <div class="col-md-7">
-        <p class="mb-1" style="font-family: var(--font-terminal); color: var(--98-link); font-size: 18px;">
-          STEP <%= format("%02d", (local_assigns[:feature_counter] || 0) + 1) %>
-        </p>
         <h3 class="h5 mb-2"><%= feature.title %></h3>
         <% if feature.description.present? %>
           <div class="mb-0"><%= simple_format(feature.description) %></div>

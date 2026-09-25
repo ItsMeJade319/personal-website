@@ -162,3 +162,14 @@
   max-width: 100%;
   height: auto;
 }
+
+/* Win98-styled <dialog>, used in place of the browser's native confirm()
+   for data-turbo-confirm actions. See confirm_dialog_controller.js. */
+dialog.window {
+  border: none;
+  max-width: min(90vw, 420px);
+}
+
+dialog.window::backdrop {
+  background: rgba(36, 28, 62, 0.55);
+}

@@ -4,12 +4,18 @@
 
 <%= render 'pages/career' %>
 
-<%= render 'pages/recent_projects' %>
 
-<%= render 'pages/art_gallery' %>
+<% if @recent_projects.any? %>
+  <%= render 'pages/recent_projects' %>
+<% end %>
+
+<% if @recent_artworks.any? %>
+  <%= render 'pages/art_gallery' %>
+<% end %>
+
 
 <% if @recent_posts.any? %>
   <%= render 'pages/recent_posts' %>
-<% else %>
-  <%= render 'pages/details' %>
 <% end %>
+
+  <%= render 'pages/details' %>

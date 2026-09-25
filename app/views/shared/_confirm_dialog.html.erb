@@ -1,0 +1,18 @@
+<dialog data-controller="confirm-dialog" data-action="cancel->confirm-dialog#cancel" class="window p-0">
+  <div class="title-bar">
+    <div class="title-bar-text">Confirm</div>
+    <div class="title-bar-controls">
+      <button type="button" aria-label="Close" data-action="confirm-dialog#cancel"></button>
+    </div>
+  </div>
+
+  <div class="window-body d-flex align-items-center gap-3">
+    <%= image_tag "icons/32px/info.png", alt: "", class: "pixel-icon flex-shrink-0", style: "height: 2rem; width: 2rem; object-fit: contain;" %>
+    <p class="mb-0" data-confirm-dialog-target="message"></p>
+  </div>
+
+  <div class="d-flex justify-content-end gap-2 p-3 pt-0">
+    <button type="button" class="btn98 btn98-primary" data-action="confirm-dialog#confirm">OK</button>
+    <button type="button" class="btn98" data-action="confirm-dialog#cancel">Cancel</button>
+  </div>
+</dialog>
