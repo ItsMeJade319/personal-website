@@ -8,14 +8,13 @@ class Project < ApplicationRecord
     reject_if: proc { |attrs| attrs["title"].blank? && attrs["description"].blank? }
 
   before_validation :generate_slug, if: -> { slug.blank? && title.present? }
-  before_validation :add_missing_url_schemes
   before_save :set_published_at, if: -> { published? && published_at.blank? }
   before_save :assign_feature_positions
 
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true,
     format: { with: /\A[a-z0-9]+(-[a-z0-9]+)*\z/, message: "must be lowercase letters, numbers, and hyphens only" }
-  validates :github_url, :demo_url, format: { with: %r{\Ahttps?://\S+\z}i, message: "must be a valid http(s) URL" }, allow_blank: true
+  validates :github_url, :demo_url, format: { without: /\s/, message: "must not contain spaces" }, allow_blank: true
 
   scope :published, -> { where(published: true).where(published_at: ..Time.current).order(published_at: :desc) }
 
@@ -56,15 +55,6 @@ class Project < ApplicationRecord
 
   def set_published_at
     self.published_at = Time.current
-  end
-
-  # Lets admins type "github.com/user/repo" instead of requiring the
-  # "https://" prefix by hand.
-  def add_missing_url_schemes
-    [ :github_url, :demo_url ].each do |attribute|
-      value = self[attribute]
-      self[attribute] = "https://#{value}" if value.present? && !value.match?(%r{\Ahttps?://}i)
-    end
   end
 
   def assign_feature_positions

@@ -8,8 +8,13 @@ module ApplicationHelper
   end
 
   # Only ever renders http(s) links, so an admin-entered URL can't be used
-  # to inject a javascript: or data: href.
+  # to inject a javascript: or data: href. Admins may type a bare domain
+  # (e.g. "example.com") without a scheme; we assume https for those.
   def safe_url(url)
-    url if url.present? && url.match?(%r{\Ahttps?://\S+\z}i)
+    return if url.blank?
+
+    url = url.strip
+    return url if url.match?(%r{\Ahttps?://\S+\z}i)
+    return "https://#{url}" if url.match?(/\A[a-zA-Z0-9][^\s:]*\z/)
   end
 end

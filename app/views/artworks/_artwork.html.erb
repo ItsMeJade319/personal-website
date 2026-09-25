@@ -5,7 +5,7 @@
     </div>
 
     <div class="window-body d-flex flex-column flex-grow-1">
-      <div class="paint-frame mb-3" style="aspect-ratio: 4 / 5; overflow: hidden;">
+      <div class="paint-frame " style="aspect-ratio: 4 / 5; overflow: hidden;">
         <% if artwork.image.attached? %>
           <%= image_tag artwork.image.variant(resize_to_limit: [ 600, 600 ]), style: "width: 100%; height: 100%; object-fit: cover;" %>
         <% else %>
@@ -15,7 +15,7 @@
         <% end %>
       </div>
 
-      <h3 class="h6 mb-1"><%= artwork.title %></h3>
+      <h3 class="h6"><%= artwork.title %></h3>
 
       <div class="status-bar mt-auto">
         <% meta = [ artwork.medium, artwork.year ].select(&:present?).join(", ") %>
