@@ -110,12 +110,15 @@
   </div>
 </div>
 
-<span class="chip98 mb-3 d-inline-block">Details</span>
 
-<div class="d-flex flex-column gap-4">
-  <%= render partial: "feature", collection: @project.features, as: :feature %>
+  <span class="chip98 mb-3 d-inline-block">Details</span>
 
-  <% if @project.features.none? %>
-    <p class="text-muted">No steps documented yet.</p>
-  <% end %>
+  <div class="d-flex flex-column gap-4">
+    <%= render partial: "feature", collection: @project.features, as: :feature %>
+
+    <% if @project.features.none? %>
+    <div class="window px-1">
+      <p class="text-muted status-bar-field">No details documented yet.</p>
+    </div>
+    <% end %>
 </div>

@@ -9,6 +9,91 @@
   box-shadow: var(--98-border-raised);
 }
 
+.win98-navbar nav.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Nav links row: flex on all sizes by default (desktop layout). */
+.win98-navbar .navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.win98-navbar .navbar-burger {
+  display: none;
+}
+
+/* Burger menu breakpoint, matching Bootstrap's md breakpoint. */
+@media (max-width: 767.98px) {
+  .win98-navbar .navbar-row {
+    width: 100%;
+  }
+
+  .win98-navbar .navbar-burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    min-width: 0;
+    height: 2.25rem;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .win98-navbar .navbar-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    box-shadow: var(--98-border-sunken);
+    background: var(--98-canvas);
+  }
+
+  .win98-navbar .navbar-menu.is-open {
+    display: flex;
+  }
+
+  .win98-navbar .navbar-menu .btn98 {
+    justify-content: center;
+  }
+}
+
+.navbar-burger-icon,
+.navbar-burger-icon::before,
+.navbar-burger-icon::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--98-text);
+}
+
+.navbar-burger-icon {
+  position: relative;
+}
+
+.navbar-burger-icon::before,
+.navbar-burger-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.navbar-burger-icon::before {
+  top: -6px;
+}
+
+.navbar-burger-icon::after {
+  top: 6px;
+}
+
 .btn98 {
   display: inline-flex;
   align-items: center;

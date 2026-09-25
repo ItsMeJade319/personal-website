@@ -9,6 +9,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Sticky footer shell. 100vh on mobile browsers is measured against the
+   viewport with the address bar visible, so as the bar collapses on scroll
+   extra space opens up below a footer pinned with min-vh-100. 100dvh tracks
+   the real, current viewport instead; browsers that don't support it ignore
+   the declaration and keep the 100vh fallback above it. */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
 .container {
   --bs-gutter-x: 1rem;
 }
