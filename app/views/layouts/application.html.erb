@@ -30,12 +30,9 @@
   <body class="app-shell">
     <%= render 'shared/navbar' %>
     <main class="container py-4 flex-grow-1 d-flex flex-column">
-      <div class="d-flex gap-4 align-items-start">
-
         <div class="flex-grow-1 min-w-0">
           <%= yield %>
         </div>
-      </div>
     </main>
     <%= render 'shared/footer' %>
     <%= render 'shared/confirm_dialog' %>

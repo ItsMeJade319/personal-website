@@ -169,6 +169,20 @@
   padding: 4px 10px;
 }
 
+/* Bootstrap's own table-responsive/table CSS isn't loaded (only the grid and
+   utilities bundles are), so the scroll-on-overflow behavior that class name
+   implies has to be provided here. Vendored 98.css also forces nowrap table
+   cells, which is fine for narrow columns but breaks the window frame on
+   mobile for prose-length cells, so it's relaxed back to wrapping. */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.window-body table {
+  white-space: normal;
+}
+
 /* Terminal line: Mint on Deep Night with a C:\> prompt. */
 .terminal98 {
   display: block;
