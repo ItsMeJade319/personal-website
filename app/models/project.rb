@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true,
     format: { with: /\A[a-z0-9]+(-[a-z0-9]+)*\z/, message: "must be lowercase letters, numbers, and hyphens only" }
+  validates :github_url, :demo_url, format: { with: %r{\Ahttps?://\S+\z}i, message: "must be a valid http(s) URL" }, allow_blank: true
 
   scope :published, -> { where(published: true).where(published_at: ..Time.current).order(published_at: :desc) }
 

@@ -66,15 +66,15 @@
         <% end %>
 
         <div class="d-flex gap-2 flex-wrap">
-          <%= link_to @project.demo_url.presence || "#", class: "btn98 btn98-primary d-inline-flex align-items-center gap-1",
-            target: (@project.demo_url.present? ? "_blank" : nil), rel: (@project.demo_url.present? ? "noopener" : nil) do %>
+          <%= link_to safe_url(@project.demo_url) || "#", class: "btn98 btn98-primary d-inline-flex align-items-center gap-1",
+            target: (safe_url(@project.demo_url) ? "_blank" : nil), rel: (safe_url(@project.demo_url) ? "noopener" : nil) do %>
             Live demo
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
             </svg>
           <% end %>
-          <%= link_to "View code", @project.github_url.presence || "#", class: "btn98",
-            target: (@project.github_url.present? ? "_blank" : nil), rel: (@project.github_url.present? ? "noopener" : nil) %>
+          <%= link_to "View code", safe_url(@project.github_url) || "#", class: "btn98",
+            target: (safe_url(@project.github_url) ? "_blank" : nil), rel: (safe_url(@project.github_url) ? "noopener" : nil) %>
         </div>
       </div>
 

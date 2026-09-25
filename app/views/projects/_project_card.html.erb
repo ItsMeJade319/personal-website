@@ -31,8 +31,8 @@
             <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
           </svg>
         <% end %>
-        <%= link_to "Code", project.github_url.presence || "#", class: "btn98 btn98-sm",
-          target: (project.github_url.present? ? "_blank" : nil), rel: (project.github_url.present? ? "noopener" : nil) %>
+        <%= link_to "Code", safe_url(project.github_url) || "#", class: "btn98 btn98-sm",
+          target: (safe_url(project.github_url) ? "_blank" : nil), rel: (safe_url(project.github_url) ? "noopener" : nil) %>
       </div>
 
     </div>
