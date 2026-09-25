@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :projects
   resources :artworks, except: :show
   resources :posts
-  resource :contact, only: [ :new, :create ]
 
   match "/404", to: "errors#not_found", via: :all
 end
