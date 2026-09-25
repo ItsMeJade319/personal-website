@@ -1,0 +1,161 @@
+/*
+ * Standalone theme for the static error pages in public/ (400, 404, 406, 422, 500).
+ * These pages can't use the asset pipeline (they may be served while the app
+ * itself is erroring), so the palette is duplicated here from
+ * app/assets/stylesheets/98-theme.css by hex value. Keep the two in sync if
+ * the brand colors change. Pairs with the vendored /vendor/98css-0.1.21/98.css
+ * for the base window/title-bar/status-bar bevels, which this file re-skins.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #3a3057;
+  font-family: Verdana, Geneva, sans-serif;
+  background-color: #bfaef0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.32) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.32) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.window {
+  width: 100%;
+  max-width: 460px;
+  background: #ece6f8;
+  box-shadow:
+    inset -1px -1px #241c3e,
+    inset 1px 1px #f7f3ff,
+    inset -2px -2px #8e80bd,
+    inset 2px 2px #ffffff;
+}
+
+.title-bar {
+  background: #5b3fc4;
+  box-shadow: inset 0 -3px 0 #e98bbd;
+}
+
+.title-bar-text {
+  color: #ffffff;
+}
+
+.title-bar-controls button {
+  background: #ece6f8;
+  box-shadow:
+    inset -1px -1px #241c3e,
+    inset 1px 1px #ffffff,
+    inset -2px -2px #8e80bd,
+    inset 2px 2px #f7f3ff;
+}
+
+.window-body {
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.error-icon {
+  flex-shrink: 0;
+}
+
+.error-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.error-code {
+  font-family: "Tinos", "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: #241c3e;
+  margin: 0;
+}
+
+.error-title {
+  font-family: "Tinos", "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: #b82f78;
+  margin: 0;
+}
+
+.error-message {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.error-path {
+  display: inline-block;
+  background: #ffffff;
+  box-shadow:
+    inset -1px -1px #ffffff,
+    inset 1px 1px #8e80bd,
+    inset -2px -2px #ece6f8,
+    inset 2px 2px #241c3e;
+  padding: 2px 6px;
+  font-family: "Pixelated MS Sans Serif", Arial;
+  font-size: 11px;
+  word-break: break-all;
+}
+
+.btn98 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  min-height: 23px;
+  min-width: 75px;
+  padding: 0 12px;
+  background: #ece6f8;
+  color: #3a3057;
+  text-decoration: none;
+  font-family: "Pixelated MS Sans Serif", Arial;
+  font-size: 11px;
+  box-shadow:
+    inset -1px -1px #241c3e,
+    inset 1px 1px #ffffff,
+    inset -2px -2px #8e80bd,
+    inset 2px 2px #f7f3ff;
+}
+
+.btn98:hover {
+  color: #3a3057;
+  text-decoration: none;
+}
+
+.btn98:active {
+  box-shadow:
+    inset -1px -1px #ffffff,
+    inset 1px 1px #241c3e,
+    inset -2px -2px #f7f3ff,
+    inset 2px 2px #8e80bd;
+}
+
+.status-bar {
+  margin: 0 3px 3px;
+}
+
+.status-bar-field {
+  box-shadow: inset -1px -1px #f7f3ff, inset 1px 1px #8e80bd;
+  font-family: "Pixelated MS Sans Serif", Arial;
+  font-size: 11px;
+  margin: 0;
+}

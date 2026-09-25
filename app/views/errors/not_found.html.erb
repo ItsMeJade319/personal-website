@@ -1,4 +1,30 @@
 <% content_for :title, "Page not found" %>
 
-<h1>404</h1>
-<p>Page not found.</p>
+<div class="window mx-auto" style="max-width: 460px;">
+  <div class="title-bar">
+    <div class="title-bar-text">Error - Explorer</div>
+    <div class="title-bar-controls">
+      <button aria-label="Close" disabled></button>
+    </div>
+  </div>
+  <div class="window-body d-flex flex-column align-items-center text-center gap-3 py-4">
+    <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="4" y="4" width="32" height="32" fill="var(--98-icon-accent)" stroke="var(--98-dark)" stroke-width="2"/>
+      <path d="M4 4 L20 20 L4 36 Z" fill="#ffffff"/>
+      <path d="M36 4 L20 20 L36 36 Z" fill="#ffffff"/>
+    </svg>
+    <div class="d-flex align-items-center gap-2 text-start">
+      <p class="mb-0" style="font-family: var(--font-display); font-weight: 700; font-size: 2.75rem; line-height: 1; color: var(--98-dark);">404</p>
+      <p class="mb-0" style="font-family: var(--font-display); font-style: italic; font-size: 1.35rem; color: var(--98-primary);">Page not found</p>
+    </div>
+    <p class="mb-0 small">
+      This computer cannot find
+      <span class="field-border d-inline-block" style="font-family: var(--font-chrome); word-break: break-all;">C:\<%= request.original_fullpath.delete_prefix("/").tr("/", "\\") %></span>.
+      It may have been moved, renamed or deleted. Check the address for typos, or head somewhere else.
+    </p>
+    <%= link_to "Back to homepage", root_path, class: "btn98 btn98-sm" %>
+  </div>
+  <div class="status-bar">
+    <p class="status-bar-field mb-0">Error 404 &middot; File not found</p>
+  </div>
+</div>
