@@ -5,7 +5,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.published.includes(:technologies)
+    @projects = if admin_signed_in?
+      Project.all.order(published_at: :desc, created_at: :desc).includes(:technologies)
+    else
+      Project.published.includes(:technologies)
+    end
   end
 
   # GET /projects/1 or /projects/1.json
